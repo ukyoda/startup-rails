@@ -1,0 +1,45 @@
+# docker-compose
+# 基本的にこのままでビルドOK
+# 各種アプリに特化させるには、下記を修正
+#
+# web.build.args.APP_HOME => ディレクトリの名前を変えること
+#
+# ==============================================================================
+version: '2'
+
+services:
+    datastore:
+        build:
+            context: ./
+            dockerfile: container/datastore
+
+    nginx:
+        image: "nginx:1.10.3"
+        ports: "8080:80"
+        volumes:
+            - "${PWD}/containers/nginx/conf.d:/etc/nginx/conf.d"
+            - "${PWD}/nginx/logs:/var/log/nginx"
+
+    rdb:
+        image: mariadb:10.1.22
+        command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        volumes_from:
+            - datastore
+
+    web:
+        build:
+            context: ./
+            args:
+                APP_HOME: /root/hello_rails
+
+        command: bundle exec rails s -p 3000 -b '0.0.0.0'
+        volumes:
+            - "${PWD}/rails:/root/hello_rails"
+        ports:
+            - "3000:3000"
+        links:
+            - rdb:rdb
