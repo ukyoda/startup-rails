@@ -20,6 +20,8 @@ services:
         volumes:
             - "${PWD}/containers/nginx/conf.d:/etc/nginx/conf.d"
             - "${PWD}/nginx/logs:/var/log/nginx"
+        links:
+            - web:web
 
     rdb:
         image: mariadb:10.1.22
