@@ -1,9 +1,6 @@
 # docker-compose
-# 基本的にこのままでビルドOK
-# 各種アプリに特化させるには、下記を修正
-#
-# web.build.args.APP_HOME => ディレクトリの名前を変えること
-#
+# 一応、参考資料
+# https://docs.docker.com/compose/rails/
 # ==============================================================================
 version: '2'
 
@@ -19,7 +16,7 @@ services:
             - "8080:80"
         volumes:
             - "${PWD}/containers/nginx/conf.d:/etc/nginx/conf.d"
-            - "${PWD}/nginx/logs:/var/log/nginx"
+            - "${PWD}/containers/nginx/logs:/var/log/nginx"
         links:
             - web:web
 
@@ -46,3 +43,5 @@ services:
             - "3000:3000"
         links:
             - rdb:rdb
+        depends_on:
+            - rdb

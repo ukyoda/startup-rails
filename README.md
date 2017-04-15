@@ -15,7 +15,8 @@ Railsの開発環境をすぐに作成するプロジェクト
 ```bash
 # まずイメージをビルド
 $ docker-compose build
-# railsプロジェクト作成(この時、README.mdをoverrideしないようにする)
+# railsプロジェクト作成
+# ※この時、Gemfileは上書き、README.mdは上書きしないこと)
 $ docker-compose run --rm web rails new . -d mysql --skip-bundle
 # bundle installしてwebのみ再ビルド
 $ docker-compose run --rm web bundle install
