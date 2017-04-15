@@ -12,7 +12,7 @@ Railsの開発環境をすぐに作成するプロジェクト
 
 ```bash
 $ docker-compose build
-$ docker-compose run --rm web rails new -d mysql --skip-bundle
+$ docker-compose run --rm web rails new . -d mysql --skip-bundle
 $ docker-compose build web
-$ docker-compose up -d 
+$ docker-compose up -d
 ```

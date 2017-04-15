@@ -35,11 +35,11 @@ services:
         build:
             context: ./
             args:
-                APP_HOME: /root/hello_rails
+                APP_HOME: /root/hello_project
 
         command: bundle exec rails s -p 3000 -b '0.0.0.0'
         volumes:
-            - "${PWD}/rails:/root/hello_rails"
+            - "${PWD}:/root/hello_project"
         ports:
             - "3000:3000"
         links:
