@@ -36,14 +36,28 @@ default: &default
   host: localhost #<= rdbに変更する
 ```
 
-その後、下記コマンドを実行
+各種コンテナ起動
 
 ```bash
-$ docker-compose run --rm web rake db:create
+$ docker-compose up -d
 ```
 
-### アプリケーション起動
+その後、下記コマンドしてDBを作成
 
+```bash
+$ docker-compose exec web rake db:create
 ```
+
+webコンテナ再起動
+```bash
+$ docker-compose restart web
+```
+
+### アプリケーション停止と起動
+
+```bash
+# 停止
+$ docker-compose stop
+# 起動
 $ docker-compose up -d
 ```
