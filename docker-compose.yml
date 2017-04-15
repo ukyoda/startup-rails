@@ -11,11 +11,12 @@ services:
     datastore:
         build:
             context: ./
-            dockerfile: container/datastore
+            dockerfile: containers/datastore/Dockerfile
 
     nginx:
         image: "nginx:1.10.3"
-        ports: "8080:80"
+        ports:
+            - "8080:80"
         volumes:
             - "${PWD}/containers/nginx/conf.d:/etc/nginx/conf.d"
             - "${PWD}/nginx/logs:/var/log/nginx"
