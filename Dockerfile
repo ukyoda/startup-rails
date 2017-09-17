@@ -8,7 +8,7 @@ ENV LANG C.UTF-8
 RUN apt-get update -qq && \
     apt-get install -y build-essential libpq-dev nodejs npm nodejs-legacy && \
     npm install -g phantomjs-prebuilt && \
-    gem install bundler
+    gem install bundler --pre
 
 # rails環境構築
 WORKDIR /tmp
