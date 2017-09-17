@@ -2,7 +2,7 @@
 
 ## 概要
 
-Railsの開発環境をすぐに作成するプロジェクト
+Rails5.1の開発環境をすぐに作成するプロジェクト
 
 ## 要件
 
@@ -17,7 +17,7 @@ Railsの開発環境をすぐに作成するプロジェクト
 $ docker-compose build
 # railsプロジェクト作成
 # ※この時、Gemfileは上書き、README.mdは上書きしないこと)
-$ docker-compose run --rm web rails new . -d mysql --skip-bundle
+$ docker-compose run --rm web rails new . -d mysql --skip-bundle --webpack
 # bundle installしてwebのみ再ビルド
 $ docker-compose run --rm web bundle install
 $ docker-compose build web

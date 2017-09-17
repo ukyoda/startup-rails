@@ -24,11 +24,11 @@ services:
         build:
             context: ./
             args:
-                APP_HOME: /root/hello_project
+                APP_HOME: /skilljam
 
         command: bundle exec rails s -p 3000 -b '0.0.0.0'
         volumes:
-            - "${PWD}:/root/hello_project"
+            - "${PWD}:/skilljam"
         ports:
             - "3000:3000"
         links:
