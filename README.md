@@ -13,14 +13,16 @@ Rails5.1の開発環境をすぐに作成するプロジェクト
 ### イメージ作成
 
 ```bash
-# まずイメージをビルド
+# まずイメージをビルドする
 $ docker-compose build
+
 # railsプロジェクト作成
-# ※この時、Gemfileは上書き、README.mdは上書きしないこと)
+# ※この時、Gemfileは上書き、README.mdは上書きしない)
 $ docker-compose run --rm web rails new . -d mysql --skip-bundle --webpack
-# bundle installしてwebのみ再ビルド
+
+# bundle install、yarn install
 $ docker-compose run --rm web bundle install
-$ docker-compose build web
+$ docker-compose run --rm web rake webpacker:install
 ```
 
 ### Database設定
