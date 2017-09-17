@@ -5,10 +5,10 @@ ARG APP_HOME
 ENV LANG C.UTF-8
 
 # 必要なものをインストール
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
-
-# bundlerインストール
-RUN gem install bundler
+RUN apt-get update -qq && \
+    apt-get install -y build-essential libpq-dev nodejs npm nodejs-legacy && \
+    npm install -g phantomjs-prebuilt && \
+    gem install bundler
 
 # rails環境構築
 WORKDIR /tmp
