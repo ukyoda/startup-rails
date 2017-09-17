@@ -23,8 +23,6 @@ services:
     web:
         build:
             context: ./
-            args:
-                APP_HOME: /skilljam
         working_dir: ${PWD}
         command: bundle exec rails s -p 3000 -b '0.0.0.0'
         volumes:
