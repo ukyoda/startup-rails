@@ -20,6 +20,9 @@ $ docker-compose build
 # ※この時、Gemfileは上書き、README.mdは上書きしない)
 $ docker-compose run --rm web rails new . -d mysql --skip-bundle --webpack
 
+# 再びdocker-compose
+$ docker-compose build
+
 # bundle install、yarn install
 $ docker-compose run --rm web bundle install
 $ docker-compose run --rm web rake webpacker:install
